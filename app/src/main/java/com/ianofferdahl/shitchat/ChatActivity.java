@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -102,7 +101,6 @@ public class ChatActivity extends Activity {
         partnerMessage.setText(message);
         partnerMessage.setPadding(16, 16, 16, 16);
         partnerMessage.setTextColor(getResources().getColor(R.color.white));
-        partnerMessage.setGravity(Gravity.CENTER);
         partnerMessage.setBackgroundResource(R.drawable.partner_message_background);
         partnerMessage.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.chat_text_size));
         partnerMessage.setMaxWidth((int) maxWidth);
