@@ -1,0 +1,104 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/light_tan_light_brown_gradient"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".SplashActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_corners_bottom_large"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/splash_title"
+            android:textColor="@color/dark_brown"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/splash_subtitle"
+            android:textColor="@color/dark_brown"
+            android:textSize="24sp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/rounded_corners_large"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/rounded_corners_brown"
+            android:onClick="buttonOnClick"
+            android:text="@string/temp1"
+            android:textColor="@color/white"
+            android:textSize="32sp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/rounded_corners_brown"
+            android:onClick="buttonOnClick"
+            android:text="@string/temp2"
+            android:textColor="@color/white"
+            android:textSize="32sp" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/rounded_corners_brown"
+            android:onClick="chatOnClick"
+            android:text="@string/temp3"
+            android:textColor="@color/white"
+            android:textSize="32sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:padding="8dp"
+        android:background="@drawable/rounded_corners_top_large">
+        
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark_brown"
+            android:text="@string/splash_footer"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

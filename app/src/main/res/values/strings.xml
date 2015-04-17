@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Shit Chat</string>
+    <string name="title_activity_chat">Shit Chat</string>
+
+    <string name="splash_title">Shit Chat</string>
+    <string name="splash_subtitle">Where chatty poopers come to talk</string>
+    <string name="splash_footer">Developed and maintained by Isaac Zais and Ian Offerdahl for the University of Wisconsin - Stout</string>
+
+    <string name="hello_world">Hello world!</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="temp1">Button 1</string>
+    <string name="temp2">Button 2</string>
+    <string name="temp3">Button 3</string>
+
+</resources>
