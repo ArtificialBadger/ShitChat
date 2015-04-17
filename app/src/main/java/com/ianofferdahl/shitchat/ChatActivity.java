@@ -41,29 +41,9 @@ public class ChatActivity extends Activity {
         maxWidth = dm.widthPixels/1.2;
 
         this.chatLayout = (RelativeLayout) findViewById(R.id.chat_layout);
-        this.addPartnerMessage("Hello fellow Pooper");
-        this.addMessage("Hello back to you");
-        this.addPartnerMessage("What did you eat?");
-        this.addMessage("Cheerios and Vodka");
-        this.addMessage("and applesauce");
-        this.addPartnerMessage("Hello fellow Pooper");
-        this.addMessage("Hello back to you");
-        this.addPartnerMessage("What did you eat?");
-        this.addMessage("Cheerios and Vodka");
-        this.addMessage("and applesauce");
-        this.addPartnerMessage("Hello fellow Pooper");
-        this.addMessage("Hello back to you");
-        this.addPartnerMessage("What did you eat?");
-        this.addMessage("Cheerios and Vodka");
-        this.addMessage("and applesauce");
-        this.addPartnerMessage("Hello fellow Pooper");
-        this.addMessage("Hello back to you");
-        this.addPartnerMessage("What did you eat?");
-        this.addPartnerMessage("Cheerios and Vodka");
-        this.addPartnerMessage("and applesauce as well as a plethora of other things, This is really long text. Is is tho?");
-        this.addMessage("What did you eat?");
-        this.addMessage("Cheerios and Vodka");
-        this.addMessage("and applesauce as well as a plethora of other things, This is really long text. Is is tho?");
+
+        fillSampleConversation();
+
     }
 
     @Override
@@ -93,6 +73,27 @@ public class ChatActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void fillSampleConversation()
+    {
+        this.addPartnerMessage("Hello fellow Pooper");
+        this.addMessage("Hello back to you");
+        this.addPartnerMessage("How are you doing today?");
+        this.addMessage("Not so good, just had a couple dozen tacos");
+        this.addPartnerMessage("Sweet baby Jesus, a couple DOZEN???");
+        this.addMessage("My buddy and I had a competition going to see who could eat more. He ended up winning.");
+        this.addPartnerMessage("How many did he eat?");
+        this.addMessage("127 and a half");
+        this.addPartnerMessage("He couldn't finish the last half for an even 128?");
+        this.addMessage("Have you ever tried to eat 128 tacos?");
+        this.addPartnerMessage("No...");
+        this.addMessage("Well sit down and try it some time, its life-changing");
+        this.addMessage("and colon-changing");
+        this.addMessage("In retrospect, hot sauce might not have been the best idea");
+        this.addPartnerMessage("At least you learned something from this whole experience");
+        this.addMessage("Only that tacos will turn all matter in your body into poop");
+    }
+
 
     private void addPartnerMessage(String message) {
 

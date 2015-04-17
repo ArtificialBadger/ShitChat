@@ -15,7 +15,8 @@
         android:background="@drawable/rounded_corners_bottom_large"
         android:orientation="vertical"
         android:padding="8dp"
-        android:layout_margin="@dimen/header_footer_margin">
+        android:layout_marginLeft="@dimen/header_footer_margin"
+        android:layout_marginRight="@dimen/header_footer_margin">
 
         <TextView
             android:layout_width="match_parent"
@@ -85,7 +86,8 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_margin="@dimen/header_footer_margin"
+        android:layout_marginLeft="@dimen/header_footer_margin"
+        android:layout_marginRight="@dimen/header_footer_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
