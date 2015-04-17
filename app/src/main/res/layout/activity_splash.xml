@@ -14,7 +14,8 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_corners_bottom_large"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:layout_margin="@dimen/header_footer_margin">
 
         <TextView
             android:layout_width="match_parent"
@@ -23,7 +24,7 @@
             android:padding="8dp"
             android:text="@string/splash_title"
             android:textColor="@color/dark_brown"
-            android:textSize="40sp"
+            android:textSize="@dimen/title_size"
             android:textStyle="bold" />
 
         <TextView
@@ -32,7 +33,7 @@
             android:padding="8dp"
             android:text="@string/splash_subtitle"
             android:textColor="@color/dark_brown"
-            android:textSize="24sp"
+            android:textSize="@dimen/subtitle_size"
             android:textStyle="italic" />
 
     </LinearLayout>
@@ -46,7 +47,7 @@
         android:layout_marginRight="32dp"
         android:background="@drawable/rounded_corners_large"
         android:orientation="vertical"
-        android:padding="32dp">
+        android:padding="@dimen/button_housing_padding">
 
         <Button
             android:id="@+id/button1"
@@ -57,7 +58,7 @@
             android:onClick="buttonOnClick"
             android:text="@string/temp1"
             android:textColor="@color/white"
-            android:textSize="32sp" />
+            android:textSize="@dimen/button_text_size" />
 
         <Button
             android:id="@+id/button2"
@@ -68,7 +69,7 @@
             android:onClick="buttonOnClick"
             android:text="@string/temp2"
             android:textColor="@color/white"
-            android:textSize="32sp" />
+            android:textSize="@dimen/button_text_size" />
 
         <Button
             android:id="@+id/button3"
@@ -79,11 +80,12 @@
             android:onClick="chatOnClick"
             android:text="@string/temp3"
             android:textColor="@color/white"
-            android:textSize="32sp" />
+            android:textSize="@dimen/button_text_size" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:layout_margin="@dimen/header_footer_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -97,7 +99,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/dark_brown"
             android:text="@string/splash_footer"
-            android:textSize="18sp"/>
+            android:textSize="@dimen/footer_size"/>
 
     </LinearLayout>
 

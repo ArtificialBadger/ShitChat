@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="chat_padding">16dp</dimen>
+    <dimen name="title_size">34sp</dimen>
+    <dimen name="subtitle_size">20sp</dimen>
+    <dimen name="footer_size">18sp</dimen>
+    <dimen name="header_footer_margin">8dp</dimen>
+    <dimen name="button_text_size">32sp</dimen>
+    <dimen name="button_housing_padding">24dp</dimen>
+    <dimen name="chat_text_size">20sp</dimen>
+
+</resources>
