@@ -2,7 +2,6 @@ package com.ianofferdahl.shitchat;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,15 +12,13 @@ import android.widget.Toast;
 
 public class SplashActivity extends Activity {
 
-    private Button Button1, Button2, Button3;
+    private Button GetStartedButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        Button1 = (Button) findViewById(R.id.button1);
-        Button2 = (Button) findViewById(R.id.button2);
-        Button3 = (Button) findViewById(R.id.button3);
+        GetStartedButton = (Button) findViewById(R.id.button3);
 
     }
 

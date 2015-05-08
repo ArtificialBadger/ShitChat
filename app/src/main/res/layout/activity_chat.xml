@@ -1,14 +1,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/light_tan_light_brown_gradient"
-    android:orientation="vertical"
-    tools:context="com.ianofferdahl.shitchat.ChatActivity">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/light_tan_light_brown_gradient"
+              android:orientation="vertical"
+              tools:context="com.ianofferdahl.shitchat.ChatActivity">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:paddingLeft="@dimen/chat_padding"
         android:paddingRight="@dimen/chat_padding"
         >
@@ -23,5 +24,28 @@
         </RelativeLayout>
 
     </ScrollView>
+
+    <LinearLayout
+        android:background="@color/dark_brown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/speak_edit_text"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@color/light_tan"
+            android:inputType="text"/>
+
+        <Button
+            android:id="@+id/send_message_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send"/>
+
+    </LinearLayout>
+
 
 </LinearLayout>

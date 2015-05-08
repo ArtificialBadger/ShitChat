@@ -1,5 +1,6 @@
 package com.ianofferdahl.shitchat;
 
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -9,12 +10,8 @@ public class Utils {
 
     private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);
 
-    /**
-     * Generate a value suitable for use in {@link #setId(int)}.
-     * This value will not collide with ID values generated at build time by aapt for R.id.
-     *
-     * @return a generated ID value
-     */
+    private static String uuid;
+
     public static int generateViewId() {
         for (;;) {
             final int result = sNextGeneratedId.get();
@@ -24,6 +21,16 @@ public class Utils {
             if (sNextGeneratedId.compareAndSet(result, newValue)) {
                 return result;
             }
+        }
+    }
+
+    public static String getUUID()
+    {
+        if (uuid == null) {
+            Utils.uuid = UUID.randomUUID().toString();
+            return Utils.getUUID();
+        } else {
+            return uuid;
         }
     }
 

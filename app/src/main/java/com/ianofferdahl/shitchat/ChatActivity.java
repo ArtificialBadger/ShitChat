@@ -12,14 +12,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ianofferdahl.shitchat.DataModels.DeviceMessageRequest;
+import com.ianofferdahl.shitchat.DataModels.DeviceRequest;
+import com.ianofferdahl.shitchat.DataModels.Messages;
 import com.ianofferdahl.shitchat.DataModels.TestObject;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class ChatActivity extends Activity {
@@ -29,6 +37,10 @@ public class ChatActivity extends Activity {
     private RelativeLayout chatLayout;
 
     private View lastMessage;
+
+    private EditText speakEditText;
+
+    private Button sendMessageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +52,42 @@ public class ChatActivity extends Activity {
         maxWidth = dm.widthPixels/1.2;
 
         this.chatLayout = (RelativeLayout) findViewById(R.id.chat_layout);
+        this.speakEditText = (EditText) findViewById(R.id.speak_edit_text);
+        this.sendMessageButton = (Button) findViewById(R.id.send_message_button);
 
-        fillSampleConversation();
+        this.sendMessageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addMessage(speakEditText.getText().toString());
+                new SendMessageRequestTask().execute(speakEditText.getText().toString());
+                speakEditText.setText("");
+                //new GetMessagesRequestTask().execute();
+            }
+        });
+
+        //fillSampleConversation();
+        new GetFriendRequestTask().execute();
+
+        setUpRequestTimer();
 
     }
+
+    private void setUpRequestTimer()
+    {
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                new GetMessagesRequestTask().execute();
+            }
+        }, 1000, 1000);
+    }
+
 
     @Override
     protected void onStart() {
         super.onStart();
-        new HttpRequestTask().execute();
+        //new HttpRequestTask().execute();
     }
 
     @Override
@@ -182,5 +221,72 @@ public class ChatActivity extends Activity {
             testObjectReceived(testObject);
         }
 
+    }
+
+    private class GetFriendRequestTask extends AsyncTask<Void, Void, String> {
+        @Override
+        protected String doInBackground(Void... params) {
+            try {
+                final String url = "https://ianofferdahl.com:9797/ShitChat/GetFriend";
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+
+                return restTemplate.postForObject(url, new DeviceRequest(Utils.getUUID()), String.class);
+            } catch (Exception e) {
+                Log.e("MainActivity", e.getMessage(), e);
+            }
+            return "";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            Log.e(this.getClass().getSimpleName(), s);
+        }
+    }
+
+    private class GetMessagesRequestTask extends AsyncTask<Void, Void, Messages> {
+        @Override
+        protected Messages doInBackground(Void... params) {
+            try {
+                final String url = "https://ianofferdahl.com:9797/ShitChat/GetMessages";
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+
+                return restTemplate.postForObject(url, new DeviceRequest(Utils.getUUID()), Messages.class);
+            } catch (Exception e) {
+                Log.e("MainActivity", e.getMessage(), e);
+            }
+            return new Messages();
+        }
+
+        @Override
+        protected void onPostExecute(Messages messages) {
+            if (messages != null) {
+                for (String message : messages.getMessageList()) {
+                    Log.e(this.getClass().getSimpleName(), message + "");
+                    addPartnerMessage(message);
+                }
+            }
+        }
+    }
+
+    private class SendMessageRequestTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                final String url = "https://ianofferdahl.com:9797/ShitChat/SendMessage";
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+                return restTemplate.postForObject(url, new DeviceMessageRequest(Utils.getUUID(), params[0]), String.class);
+            } catch (Exception e) {
+                Log.e("MainActivity", e.getMessage(), e);
+            }
+            return "";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            Log.e(this.getClass().getSimpleName(), s);
+        }
     }
 }

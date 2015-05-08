@@ -51,28 +51,6 @@
         android:padding="@dimen/button_housing_padding">
 
         <Button
-            android:id="@+id/button1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@drawable/rounded_corners_brown"
-            android:onClick="buttonOnClick"
-            android:text="@string/temp1"
-            android:textColor="@color/white"
-            android:textSize="@dimen/button_text_size" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@drawable/rounded_corners_brown"
-            android:onClick="buttonOnClick"
-            android:text="@string/temp2"
-            android:textColor="@color/white"
-            android:textSize="@dimen/button_text_size" />
-
-        <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
