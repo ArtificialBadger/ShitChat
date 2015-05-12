@@ -24,6 +24,12 @@ public class Utils {
         }
     }
 
+    public static String resetUUID()
+    {
+        Utils.uuid = UUID.randomUUID().toString();
+        return Utils.getUUID();
+    }
+
     public static String getUUID()
     {
         if (uuid == null) {

@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.ianofferdahl.shitchat.DataModels.DeviceMessageRequest;
@@ -42,6 +43,10 @@ public class ChatActivity extends Activity {
 
     private Button sendMessageButton;
 
+    private ScrollView chatScrollView;
+
+    private Timer timer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +59,9 @@ public class ChatActivity extends Activity {
         this.chatLayout = (RelativeLayout) findViewById(R.id.chat_layout);
         this.speakEditText = (EditText) findViewById(R.id.speak_edit_text);
         this.sendMessageButton = (Button) findViewById(R.id.send_message_button);
+        this.chatScrollView = (ScrollView) findViewById(R.id.chat_scroll_view);
+
+
 
         this.sendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,9 +80,21 @@ public class ChatActivity extends Activity {
 
     }
 
+    @Override
+    protected void onPause() {
+        cancelTimer();
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Utils.resetUUID();
+        super.onDestroy();
+    }
+
     private void setUpRequestTimer()
     {
-        Timer timer = new Timer();
+        timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
@@ -83,6 +103,10 @@ public class ChatActivity extends Activity {
         }, 1000, 1000);
     }
 
+    private void cancelTimer()
+    {
+        timer.cancel();
+    }
 
     @Override
     protected void onStart() {
@@ -105,7 +129,8 @@ public class ChatActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_reset) {
+            this.recreate();
             return true;
         }
 
@@ -161,6 +186,12 @@ public class ChatActivity extends Activity {
         lastMessage = partnerMessage;
         chatLayout.addView(partnerMessage, params);
 
+        chatScrollView.post(new Runnable() {
+            public void run() {
+                chatScrollView.fullScroll(View.FOCUS_DOWN);
+            }
+        });
+
     }
 
     private void addMessage(String message) {
@@ -182,7 +213,7 @@ public class ChatActivity extends Activity {
 
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.setMargins(0,4,0,4);
+        params.setMargins(0, 4, 0, 4);
         params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
 
         if (lastMessage != null) {
@@ -191,6 +222,12 @@ public class ChatActivity extends Activity {
 
         lastMessage = sentMessage;
         chatLayout.addView(sentMessage, params);
+
+        chatScrollView.post(new Runnable() {
+            public void run() {
+                chatScrollView.fullScroll(View.FOCUS_DOWN);
+            }
+        });
 
     }
 
